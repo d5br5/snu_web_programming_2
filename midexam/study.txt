@@ -1,0 +1,152 @@
+typeof => 내장함수라 괄호() 불요 써도 무방
+typeof null          // "object" (하위호환 유지를 위해 "null"이 아님)
+typeof undefined     // "undefined"
+undefined === undefined // true
+null === undefined   // false
+null  == undefined   // true
+null === null        // true
+null == null         // true
+!null                // true
+isNaN(1 + null)      // false
+isNaN(1 + undefined) // true
+
+원시값  string, number, bigint, boolean, undefined, symbol
+교수님은 => string, number, boolean, null, undefined, symbol
+=> 변형 불가능함 => 모든 것은 object
+
+undefined => 선언되고 값이 할당되지 않은 변수에 기본 할당
+null => 어떤 값이 의도적으로 비어있음을 표현하며 불리언 연산에서는 거짓으로 취급 (둘 모두)
+
+
+let foo = 5; // 원시 값
+
+function addTwo(num) { // 원시 값을 변경해야 하는 함수 정의
+   num += 2;
+}
+
+function addTwo_v2(foo) { // 같은 작업을 시도하는 다른 함수
+   foo += 2;
+}
+
+addTwo(foo);        // 원시 값을 인수로 전달해 첫 번째 함수를 호출
+console.log(foo);   // 5    // 현재 원시 값 반환
+
+addTwo_v2(foo);     // 두 번째 함수로 다시 시도
+console.log(foo);   // 5
+
+foo=addTwo_v2(foo);  
+console.log(foo);   //undefined -> 리턴값 없는 함수이기 때문
+
+
+== 은 동일 자료형으로 변환 후 비교
+=== 은 자료형과 값이 모두 같아야 참
+
+  1   ==  1        // true
+ "1"  ==  1        // true
+  1   == '1'       // true
+  0   == false     // true
+  0   == null      // false
+  0   === flase    // false
+
+  0   == undefined // false
+null  == undefined // true
+['a']==['a']       // false
+['a']===['a']      // false
+[]===[]            // false
+
+a=[1,2], b=[1,2]   // a==b false
+a=b 하고
+a.push(1) 하면
+a=[1,2,1], b=[1,2,1]  // a===b true
+
+
+!=은 == 수준에서 비교 
+엄격비교는 !==
+
+1 !=   2     // true
+1 !=  "1"    // false
+1 !=  '1'    // false
+1 !=  true   // false
+0 !=  false  // false
+ +0 === -0 은 true
+
+
+
+'foo' === 'foo'             // true as both operands are type String (i.e. string primitives):
+
+var a = new String('foo');
+var b = new String('foo');
+
+a == b      // false as a and b are type Object and reference different objects
+a === b     // false as a and b are type Object and reference different objects
+a == 'foo'  // true as a and 'foo' are of different type and, the Object (a) is converted to String 'foo' before comparison
+
+'There is no cow level'.split('') // ['T', 'h', 'e', 'r', 'e', ' ', 'i', 's', ' ', 'n', 'o', ' ', 'c', 'o', 'w', ' ', 'l', 'e', 'v', 'e', 'l']
+
+typeof 3             // 'number'
+typeof (()=>alert()) // 'function'
+typeof {}            // 'object'
+typeof(typeof (()=>alert()))  // 'string' // typeof ('function')
+typeof null          // 'object'
+typeof undefined     //'undefined'
+
+[1,2,3].length === 'hii'.length  // true
+[1,5,6].pop() !== (1).toString() // true => pop은 맨뒤
+[1,5,6].pop() === 6 // true
+
+continue => 반복문 첫번째 줄로 이동
+break    => 반복문 탈출
+
+let a;
+typeof a // undefined
+
+let a=null;
+function fa(a){a=3;} 
+fa();
+=> 이거는 a= null 출력
+
+let a=null;
+function fa(){a=3;} 
+fa();
+=> 함수 인자 없으면 a=3출력
+=> let a=3 하면 내부 변수로 인식, null 출력
+
+
+npm init 명령어는 node 프로그램을 시작(initialize)하는 명령어로 package.json 파일을 생성을 돕습니다. 
+package.json 파일은  해당 node 프로그램에 대한 기본 정보를 담고 있는 파일입니다.
+현재 폴더를 노드 프로젝트로 인식하고 초기화하기 위하여 프로젝트 시작시 init을 하는 것
+프로젝트별로 라이브러리의 버전을 다르게 사용할 수 있는데, 공통으로 사용하면 꼬일 수 있음
+
+
+require('module')은 'module'이름을 가진 모듈을 불러오는것
+require('./module')은 경로 내에 있는 파일을 가져오는 것
+
+npm로부터 새로 추가된 도구 => npx
+npm은 패키지를 관리하는 manager 느낌
+npx는 패키지를 실행하는 runner 느낌
+
+RESTful
+Representational State Transfer
+create => post
+delete => delete
+get    => get
+search => get
+update => put
+
+express에서 body parser를 다르게 지정하는 이유?
+바디를 파싱할때 받는 내용들을 어떻게 해석해야 할지에 대한 규칙이달라질 수 있어서
+
+//단항더하기
++"5" // 5 (string to number)
++"" // 0 (string to number)
++"1 + 2" // NaN (doesn't evaluate)
++new Date() // same as (new Date()).getTime()
++"foo" // NaN (string to number)
++{} // NaN
++[] // 0 (toString() returns an empty string list)
++[1] // 1
++[1,2] // NaN
++undefined // NaN
++null // 0
++true // 1
++false // 0
