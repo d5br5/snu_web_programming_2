@@ -1,0 +1,54 @@
+
+
+머드 게임...
+
+
+# models
+
+### player
+name
+email
+password
+
+level
+exp
+job
+maxHP
+HP
+maxMP
+MP
+str
+dex
+
+### Item 철퇴, 판금갑옷, 유리검 ... /// 스탯 모두 중첩. 소모성 아이템 업슈.
+hp
+mp
+str
+dex
+
+### Bag player1이 철퇴를 가지고 있다.
+player
+item
+
+
+### Map => 하나만, 5 * 5
+xxxxx
+xxxxx
+xxxxx
+xxxxx
+xxxxx
+
+### Field => 25개
+title
+description
+x
+y
+map
+
+### Event
+type => (Idle, Battle, Item,)
+enemy => {name, hp, str, reward: {exp, item }}
+
+
+
+
