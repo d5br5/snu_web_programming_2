@@ -22,6 +22,7 @@ const authentication = async (req, res, next) => {
   const [bearer, key] = authorization.split(" ");
   if (bearer !== "Bearer") return res.sendStatus(401);
   const user = await User.findOne({ key });
+  req.token = key;
   if (!user) return res.sendStatus(401);
 
   req.user = user;
